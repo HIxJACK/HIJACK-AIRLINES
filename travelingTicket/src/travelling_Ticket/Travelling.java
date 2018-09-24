@@ -236,11 +236,21 @@ public class Travelling {
 		lblSub.setBounds(422, 61, 65, 16);
 		frame.getContentPane().add(lblSub);
 		
+		JComboBox txtClass = new JComboBox();
+		txtClass.setModel(new DefaultComboBoxModel(new String[] {"Economy", "Business", "First Class"}));
+		txtClass.setBounds(402, 87, 98, 26);
+		frame.getContentPane().add(txtClass);
+		
 		JLabel lblSu = new JLabel("Ticket");
 		lblSu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSu.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		lblSu.setBounds(536, 61, 65, 16);
 		frame.getContentPane().add(lblSu);
+		
+		JComboBox txtTicket = new JComboBox();
+		txtTicket.setModel(new DefaultComboBoxModel(new String[] {"Round Trip", "One Way"}));
+		txtTicket.setBounds(523, 87, 98, 26);
+		frame.getContentPane().add(txtTicket);
 		
 		JLabel lblSub_1 = new JLabel("Adult");
 		lblSub_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -248,31 +258,16 @@ public class Travelling {
 		lblSub_1.setBounds(761, 60, 61, 16);
 		frame.getContentPane().add(lblSub_1);
 		
+		JComboBox txtAdult = new JComboBox();
+		txtAdult.setModel(new DefaultComboBoxModel(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9}));
+		txtAdult.setBounds(754, 87, 98, 26);
+		frame.getContentPane().add(txtAdult);
+		
 		JLabel lblChild = new JLabel("Child");
 		lblChild.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChild.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		lblChild.setBounds(637, 60, 79, 16);
 		frame.getContentPane().add(lblChild);
-		
-		txtClass = new JTextField();
-		txtClass.setColumns(10);
-		txtClass.setBounds(402, 87, 98, 26);
-		frame.getContentPane().add(txtClass);
-		
-		txtTicket = new JTextField();
-		txtTicket.setColumns(10);
-		txtTicket.setBounds(523, 87, 98, 26);
-		frame.getContentPane().add(txtTicket);
-		
-		txtChild = new JTextField();
-		txtChild.setColumns(10);
-		txtChild.setBounds(637, 87, 98, 26);
-		frame.getContentPane().add(txtChild);
-		
-		txtAdult = new JTextField();
-		txtAdult.setColumns(10);
-		txtAdult.setBounds(754, 87, 98, 26);
-		frame.getContentPane().add(txtAdult);
 		
 		JSeparator separator_7 = new JSeparator();
 		separator_7.setBounds(402, 78, 450, 12);
@@ -288,9 +283,9 @@ public class Travelling {
 		lblFrom.setBounds(402, 156, 65, 16);
 		frame.getContentPane().add(lblFrom);
 		
-		txtFrom = new JTextField();
-		txtFrom.setColumns(10);
-		txtFrom.setBounds(482, 151, 98, 26);
+		JComboBox txtFrom = new JComboBox();
+		txtFrom.setModel(new DefaultComboBoxModel(new String[] {"Destination...", "Dubai", "New York", "Atlanta", "Washington", "London", "France", "Spain", "Italy", "Yo Mama's House"}));
+		txtFrom.setBounds(482, 151, 108, 26);
 		frame.getContentPane().add(txtFrom);
 		
 		JLabel lblTo = new JLabel("To:");
@@ -299,11 +294,21 @@ public class Travelling {
 		lblTo.setBounds(402, 214, 65, 16);
 		frame.getContentPane().add(lblTo);
 		
+		JComboBox txtTo = new JComboBox();
+		txtTo.setModel(new DefaultComboBoxModel(new String[] {"Destination...", "Dubai", "New York", "Atlanta", "Washington", "London", "France", "Spain", "Italy", "Yo Mama's House"}));
+		txtTo.setBounds(482, 209, 108, 26);
+		frame.getContentPane().add(txtTo);
+		
 		JLabel lblDate = new JLabel("Date:");
 		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDate.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		lblDate.setBounds(402, 275, 65, 16);
 		frame.getContentPane().add(lblDate);
+		
+		txtDate = new JTextField();
+		txtDate.setColumns(10);
+		txtDate.setBounds(482, 271, 108, 26);
+		frame.getContentPane().add(txtDate);
 		
 		JLabel lblTime = new JLabel("Time:");
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
@@ -311,38 +316,48 @@ public class Travelling {
 		lblTime.setBounds(402, 331, 65, 16);
 		frame.getContentPane().add(lblTime);
 		
-		JSeparator separator_9 = new JSeparator();
-		separator_9.setOrientation(SwingConstants.VERTICAL);
-		separator_9.setBounds(627, 135, 12, 221);
-		frame.getContentPane().add(separator_9);
-		
-		txtTo = new JTextField();
-		txtTo.setColumns(10);
-		txtTo.setBounds(482, 209, 98, 26);
-		frame.getContentPane().add(txtTo);
-		
-		txtDate = new JTextField();
-		txtDate.setColumns(10);
-		txtDate.setBounds(482, 271, 98, 26);
-		frame.getContentPane().add(txtDate);
-		
 		txtTime = new JTextField();
 		txtTime.setColumns(10);
-		txtTime.setBounds(482, 327, 98, 26);
+		txtTime.setBounds(482, 327, 108, 26);
 		frame.getContentPane().add(txtTime);
+		
+		JSeparator separator_9 = new JSeparator();
+		separator_9.setOrientation(SwingConstants.VERTICAL);
+		separator_9.setBounds(637, 135, 12, 221);
+		frame.getContentPane().add(separator_9);
 		
 		JLabel lblTicketNumber = new JLabel("Ticket No.");
 		lblTicketNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTicketNumber.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		lblTicketNumber.setBounds(651, 155, 110, 16);
+		lblTicketNumber.setBounds(671, 155, 110, 16);
 		frame.getContentPane().add(lblTicketNumber);
+		
+		txtTicketNo = new JTextField();
+		txtTicketNo.setColumns(10);
+		txtTicketNo.setBounds(671, 171, 98, 26);
+		frame.getContentPane().add(txtTicketNo);
 		
 		JLabel lblPrice = new JLabel("Price");
 		lblPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrice.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		lblPrice.setBounds(670, 213, 65, 16);
+		lblPrice.setBounds(690, 213, 65, 16);
 		frame.getContentPane().add(lblPrice);
 		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(671, 239, 98, 26);
+		frame.getContentPane().add(textField);
+		
+		JLabel lblRoute = new JLabel("Route");
+		lblRoute.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRoute.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		lblRoute.setBounds(690, 276, 65, 16);
+		frame.getContentPane().add(lblRoute);
+		
+		txtRoute = new JTextField();
+		txtRoute.setBounds(671, 304, 98, 26);
+		frame.getContentPane().add(txtRoute);
+		txtRoute.setColumns(10);
 		
 		JButton btnTotal1 = new JButton("Total");
 		btnTotal1.addActionListener(new ActionListener() {
@@ -358,8 +373,8 @@ public class Travelling {
 				SimpleDateFormat Tdate = new SimpleDateFormat("dd-MM-yyyy");
 				txtDate.setText(Tdate.format(timer.getTime()));
 				
-				txtFrom.setText("London ");
-				txtTo.setText((String) cmdDestination.getSelectedItem()+ " *");
+				// txtFrom.setText("London ");
+				// txtTo.setText((String) cmdDestination.getSelectedItem()+ " *");
 				
 				//=== Random Number Generator ===//
 				int num1;
@@ -375,29 +390,7 @@ public class Travelling {
 		btnTotal1.setBounds(6, 327, 117, 29);
 		frame.getContentPane().add(btnTotal1);
 		
-	
-		txtTicketNo = new JTextField();
-		txtTicketNo.setColumns(10);
-		txtTicketNo.setBounds(651, 171, 98, 26);
-		frame.getContentPane().add(txtTicketNo);
 		
-		
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(651, 239, 98, 26);
-		frame.getContentPane().add(textField);
-		
-		txtRoute = new JTextField();
-		txtRoute.setBounds(651, 304, 98, 26);
-		frame.getContentPane().add(txtRoute);
-		txtRoute.setColumns(10);
-		
-		JLabel lblRoute = new JLabel("Route");
-		lblRoute.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRoute.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		lblRoute.setBounds(670, 276, 65, 16);
-		frame.getContentPane().add(lblRoute);
 		
 		
 		
