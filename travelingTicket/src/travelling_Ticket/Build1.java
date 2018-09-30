@@ -25,7 +25,7 @@ import java.awt.event.FocusEvent;
 
 public class Build1 {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField txtFrom;
 	private JTextField txtTo;
 	private JTextField txtDeparture;
@@ -79,6 +79,7 @@ public class Build1 {
 				txtReturn.setEnabled(false);
 			}
 		});
+		
 		rdbtnOneWay.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		rdbtnOneWay.setBounds(270, 150, 100, 25);
 		frame.getContentPane().add(rdbtnOneWay);
@@ -90,7 +91,7 @@ public class Build1 {
 			}
 		});
 		rdbtnRoundTrip.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		rdbtnRoundTrip.setBounds(430, 150, 100, 25);
+		rdbtnRoundTrip.setBounds(430, 150, 112, 25);
 		frame.getContentPane().add(rdbtnRoundTrip);
 		
 		ButtonGroup rdbtn = new ButtonGroup();
@@ -107,7 +108,7 @@ public class Build1 {
 				txtReturn.setText("MM/DD/YY");
 			}
 		});
-		btnNewButton.setBounds(20, 510, 120, 30);
+		btnNewButton.setBounds(20, 482, 120, 58);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNext = new JButton("Next");
@@ -115,14 +116,15 @@ public class Build1 {
 		btnNext.setToolTipText("Exit Button");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame = new JFrame();
-				frame.setBounds(0, 0, 800, 600);
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.getContentPane().setLayout(null);
-	
+				
+				frame.dispose();
+			Flight_Times flight = new Flight_Times();
+			flight.setVisible(true);
+				
+				
 			}
 		});
-		btnNext.setBounds(640, 510, 120, 30);
+		btnNext.setBounds(640, 482, 120, 58);
 		frame.getContentPane().add(btnNext);
 		
 		JButton btnExit = new JButton("Exit");
@@ -139,7 +141,7 @@ public class Build1 {
 				
 			}
 		});
-		btnExit.setBounds(360, 510, 120, 30);
+		btnExit.setBounds(360, 482, 120, 58);
 		frame.getContentPane().add(btnExit);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -159,8 +161,8 @@ public class Build1 {
 		
 		JComboBox drpFrom = new JComboBox();
 		drpFrom.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		drpFrom.setModel(new DefaultComboBoxModel(new String[] {"Destination...", "Dubai", "New York", "Atlanta", "Washington", "London", "France", "Spain", "Italy", "Yo Mama's House"}));
-		drpFrom.setBounds(175, 70, 120, 30);
+		drpFrom.setModel(new DefaultComboBoxModel(new String[] {"Departure...", "Dubai", "New York", "Atlanta", "Washington", "London", "France", "Spain"}));
+		drpFrom.setBounds(175, 70, 140, 30);
 		frame.getContentPane().add(drpFrom);
 		
 		JLabel lblTo = new JLabel("To:");
@@ -171,8 +173,8 @@ public class Build1 {
 		
 		JComboBox drpTo = new JComboBox();
 		drpTo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		drpTo.setModel(new DefaultComboBoxModel(new String[] {"Destination...", "Dubai", "New York", "Atlanta", "Washington", "London", "France", "Spain", "Italy", "Yo Mama's House"}));
-		drpTo.setBounds(550, 70, 120, 30);
+		drpTo.setModel(new DefaultComboBoxModel(new String[] {"Destination...", "Dubai", "New York", "Atlanta", "Washington", "London", "France", "Spain"}));
+		drpTo.setBounds(550, 70, 140, 30);
 		frame.getContentPane().add(drpTo);
 		
 		JLabel lblDeparture = new JLabel("Departure:");
@@ -216,7 +218,7 @@ public class Build1 {
 		
 		JComboBox txtAdult = new JComboBox();
 		txtAdult.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtAdult.setModel(new DefaultComboBoxModel(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9}));
+		txtAdult.setModel(new DefaultComboBoxModel(new Integer[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
 		txtAdult.setBounds(230, 360, 100, 30);
 		frame.getContentPane().add(txtAdult);
 		
@@ -234,9 +236,18 @@ public class Build1 {
 		
 		JComboBox txtChild = new JComboBox();
 		txtChild.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtChild.setModel(new DefaultComboBoxModel(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9}));
+		txtChild.setModel(new DefaultComboBoxModel(new Integer[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
 		txtChild.setBounds(475, 360, 100, 30);
 		frame.getContentPane().add(txtChild);		
 		
 	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
 }
