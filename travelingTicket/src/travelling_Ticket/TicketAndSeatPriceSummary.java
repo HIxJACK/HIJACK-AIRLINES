@@ -36,6 +36,8 @@ public class TicketAndSeatPriceSummary extends JFrame  {
 	private JSeparator separator_1;
 	private JSeparator separator_2;
 	private JButton btnNewButton_2;
+	private JTextField txtTotal;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -141,12 +143,12 @@ public class TicketAndSeatPriceSummary extends JFrame  {
 		contentPane.add(lblNewLabel_2);
 		
 		txtTaxes = new JTextField();
-		txtTaxes.setBounds(472, 125, 91, 26);
+		txtTaxes.setBounds(472, 110, 91, 26);
 		contentPane.add(txtTaxes);
 		txtTaxes.setColumns(10);
 		
 		lblNewLabel_3 = new JLabel("Taxes");
-		lblNewLabel_3.setBounds(497, 110, 46, 16);
+		lblNewLabel_3.setBounds(493, 98, 46, 16);
 		contentPane.add(lblNewLabel_3);
 		
 		panel = new JPanel();
@@ -175,13 +177,23 @@ public class TicketAndSeatPriceSummary extends JFrame  {
 				txtTo.setText("Dubai");
 				txtFromTime.setText("10:00am");
 				txtToTime.setText("4:00pm");
-				txtSeating.setText("Main Cabin");
+				txtSeating.setText("Comfort");
 				txtPPP.setText("$500.00");
 				txtTaxes.setText("$55.00");
+				txtTotal.setText("$1055.00");
 				
 			}
 		});
 		btnNewButton_2.setBounds(24, 154, 125, 29);
 		contentPane.add(btnNewButton_2);
+		
+		txtTotal = new JTextField();
+		txtTotal.setBounds(472, 157, 101, 26);
+		contentPane.add(txtTotal);
+		txtTotal.setColumns(10);
+		
+		lblNewLabel = new JLabel("Total");
+		lblNewLabel.setBounds(493, 148, 46, 16);
+		contentPane.add(lblNewLabel);
 	}
 }

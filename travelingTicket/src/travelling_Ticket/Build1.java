@@ -93,6 +93,7 @@ public class Build1 {
 		rdbtnRoundTrip.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		rdbtnRoundTrip.setBounds(430, 150, 112, 25);
 		frame.getContentPane().add(rdbtnRoundTrip);
+		rdbtnRoundTrip.setSelected(true);
 		
 		ButtonGroup rdbtn = new ButtonGroup();
 		rdbtn.add(rdbtnOneWay);

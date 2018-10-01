@@ -1,20 +1,26 @@
 package travelling_Ticket;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTable;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
+
+import net.proteanit.sql.DbUtils;
+
 
 public class Flight_Times extends JFrame {
 
@@ -36,11 +42,14 @@ public class Flight_Times extends JFrame {
 			}
 		});
 	}
+Connection connection = null;
 
 	/**
 	 * Create the frame.
 	 */
 	public Flight_Times()  {
+	//	connection = SQLiteJDBC.SQLite();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -57,9 +66,12 @@ public class Flight_Times extends JFrame {
 		label.setFont(new Font("Dialog", Font.PLAIN, 15));
 		panel.add(label);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(113, 132, 615, 171);
+		contentPane.add(scrollPane);
+		
 		table = new JTable();
-		table.setBounds(113, 132, 615, 171);
-		contentPane.add(table);
+		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Summary");
 		btnNewButton.setBounds(677, 519, 117, 53);
@@ -100,7 +112,7 @@ public class Flight_Times extends JFrame {
 		contentPane.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Comfort");
-		rdbtnNewRadioButton_1.setBounds(370, 345, 92, 23);
+		rdbtnNewRadioButton_1.setBounds(393, 345, 92, 23);
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("FirstClass");
@@ -112,7 +124,7 @@ public class Flight_Times extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel label_1 = new JLabel("$500.00");
-		label_1.setBounds(401, 380, 61, 16);
+		label_1.setBounds(413, 380, 61, 16);
 		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("$1000.00");
@@ -122,5 +134,28 @@ public class Flight_Times extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(6, 468, 788, 12);
 		contentPane.add(separator);
+		
+		JButton btnLoadFlights = new JButton("Load Flight Times");
+		btnLoadFlights.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					String query = "select * from COMPANY";
+					PreparedStatement pst = connection.prepareStatement(query);
+					ResultSet rs = pst.executeQuery();
+					
+					table.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					
+				}catch (Exception e1){
+					e1.printStackTrace();
+				}
+				
+			}
+			
+		});
+		
+		btnLoadFlights.setBounds(367, 304, 152, 29);
+		contentPane.add(btnLoadFlights);
 	}
 }
