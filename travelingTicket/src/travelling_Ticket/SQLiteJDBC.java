@@ -1,9 +1,9 @@
 
-
+/*
 package travelling_Ticket;
 
 import java.sql.*;
-/*
+
 public class SQLiteJDBC {
 
 
