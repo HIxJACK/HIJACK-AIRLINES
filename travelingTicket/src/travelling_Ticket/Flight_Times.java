@@ -48,7 +48,7 @@ Connection connection = null;
 	 * Create the frame.
 	 */
 	public Flight_Times()  {
-	//	connection = SQLiteJDBC.SQLite();
+	//connection = SQLiteJDBC.SQLite();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);

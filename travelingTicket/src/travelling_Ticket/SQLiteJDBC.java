@@ -1,21 +1,23 @@
 
-/*
+
 package travelling_Ticket;
 
 import java.sql.*;
-
+/*
 public class SQLiteJDBC {
+
+
 	/*
-public  static Connection SQLite() {
+	public  static Connection SQLite() {
 		Connection c = null;
 		   Statement stmt = null;
 		   try {
 		      Class.forName("org.sqlite.JDBC");
-		      c = DriverManager.getConnection("jdbc:sqlite:\\Users\\cjt1496\\sqlite\\test.db");
-		      c.setAutoCommit(false);
-		      System.out.println("Opened database successfully");  
+		      c = DriverManager.getConnection("jdbc:sqlite:flightTimes.db");
+		     c.setAutoCommit(false);
+		     System.out.println("Opened database successfully");  
 		      stmt = c.createStatement();
-		      ResultSet rs = stmt.executeQuery( "SELECT * FROM COMPANY;" );
+		      ResultSet rs = stmt.executeQuery( "SELECT * FROM flightTimes;" );
 		      
 		      while ( rs.next() ) {
 		         int id = rs.getInt("id");
