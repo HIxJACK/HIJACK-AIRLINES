@@ -199,3 +199,4 @@ public class TicketAndSeatPriceSummary extends JFrame  {
 		contentPane.add(lblNewLabel);
 	}
 }
+//summary

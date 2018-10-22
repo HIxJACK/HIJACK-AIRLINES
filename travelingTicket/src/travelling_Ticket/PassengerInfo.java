@@ -238,3 +238,5 @@ public class PassengerInfo extends JFrame {
 		
 	}
 }
+
+//passenger info
