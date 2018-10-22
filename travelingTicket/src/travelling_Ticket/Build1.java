@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.JRadioButton;
@@ -63,6 +66,60 @@ public class Build1 {
 		frame.setBounds(0, 0, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JMenuBar menubar = new JMenuBar();
+		frame.setJMenuBar(menubar);
+		
+		JMenu options = new JMenu("Options");
+		menubar.add(options);
+		JMenuItem faq = new JMenuItem("FAQ");
+		options.add(faq);
+		JMenuItem terms = new JMenuItem("Terms of Use");
+		options.add(terms);
+		JMenuItem privacy = new JMenuItem("Privacy Policy");
+		options.add(privacy);
+		JMenuItem contact = new JMenuItem("Contact Us");
+		options.add(contact);
+		JMenuItem exit = new JMenuItem("Exit");
+		options.add(exit);
+		
+		JMenu sky_member = new JMenu("Sky Member");
+		menubar.add(sky_member);
+		JMenuItem military = new JMenuItem("Militery Airfare");
+		sky_member.add(military);
+		JMenuItem dimondplus = new JMenuItem("Diamond Plus");
+		sky_member.add(dimondplus);
+		JMenuItem skypriority = new JMenuItem("Sky Priority");
+		sky_member.add(skypriority);
+		JMenuItem join = new JMenuItem("Sign Up");
+		sky_member.add(join);
+		
+		JMenu locator = new JMenu("Flight Locator");
+		menubar.add(locator);
+		JMenu Employee_login = new JMenu("Employee Login");
+		JMenuItem login = new JMenuItem("login");
+		login.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent evt) {
+		    	login flight = new login();
+				flight.setVisible(true);
+		    }
+		});
+		Employee_login.add(login);
+		
+		/*
+		Employee_login.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				login flight = new login();
+				flight.setVisible(true);
+					
+				
+			}
+			
+		});
+		*/
+		menubar.add(Employee_login); //MENU ITEMS ENDS HERE
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));

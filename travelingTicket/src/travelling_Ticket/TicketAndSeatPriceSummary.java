@@ -84,6 +84,8 @@ public class TicketAndSeatPriceSummary extends JFrame  {
 		JButton btnNewButton_1 = new JButton("Continue");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				PassengerInfo PInfo = new PassengerInfo();
+				PInfo.frame.setVisible(true);
 				dispose();
 				
 				

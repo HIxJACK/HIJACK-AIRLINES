@@ -1,25 +1,24 @@
 package travelling_Ticket;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
-
-import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
 
 
 public class Flight_Times extends JFrame {
@@ -67,14 +66,14 @@ Connection connection = null;
 		panel.add(label);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(113, 132, 615, 171);
+		scrollPane.setBounds(89, 132, 615, 171);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Summary");
-		btnNewButton.setBounds(677, 519, 117, 53);
+		btnNewButton.setBounds(343, 493, 117, 53);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -90,6 +89,20 @@ Connection connection = null;
 		});
 		contentPane.add(btnNewButton);
 		
+		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			PassengerInfo PInfo = new PassengerInfo();
+			PInfo.frame.setVisible(true);
+			dispose();
+				
+			}
+		});
+		btnNext.setBounds(653, 493, 117, 53);
+		contentPane.add(btnNext);
+		
 		JButton btnNewButton_1 = new JButton("Back");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -99,7 +112,7 @@ Connection connection = null;
 				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(6, 519, 117, 53);
+		btnNewButton_1.setBounds(16, 493, 117, 53);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("Flight Times and Seat Prices");
@@ -108,27 +121,27 @@ Connection connection = null;
 		contentPane.add(lblNewLabel);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Main Cabin");
-		rdbtnNewRadioButton.setBounds(113, 345, 117, 23);
+		rdbtnNewRadioButton.setBounds(89, 345, 117, 23);
 		contentPane.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Comfort");
-		rdbtnNewRadioButton_1.setBounds(393, 345, 92, 23);
+		rdbtnNewRadioButton_1.setBounds(369, 345, 92, 23);
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("FirstClass");
-		rdbtnNewRadioButton_2.setBounds(622, 345, 106, 23);
+		rdbtnNewRadioButton_2.setBounds(598, 345, 106, 23);
 		contentPane.add(rdbtnNewRadioButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("$100.00");
-		lblNewLabel_1.setBounds(150, 380, 61, 16);
+		lblNewLabel_1.setBounds(126, 380, 61, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel label_1 = new JLabel("$500.00");
-		label_1.setBounds(413, 380, 61, 16);
+		label_1.setBounds(389, 380, 61, 16);
 		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("$1000.00");
-		label_2.setBounds(653, 380, 61, 16);
+		label_2.setBounds(629, 380, 61, 16);
 		contentPane.add(label_2);
 		
 		JSeparator separator = new JSeparator();
@@ -136,26 +149,26 @@ Connection connection = null;
 		contentPane.add(separator);
 		
 		JButton btnLoadFlights = new JButton("Load Flight Times");
-		btnLoadFlights.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					String query = "select * from COMPANY";
-					PreparedStatement pst = connection.prepareStatement(query);
-					ResultSet rs = pst.executeQuery();
-					
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-					
-					
-				}catch (Exception e1){
-					e1.printStackTrace();
-				}
-				
-			}
-			
-		});
+//		btnLoadFlights.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				try {
+//					String query = "select * from COMPANY";
+//					PreparedStatement pst = connection.prepareStatement(query);
+//					ResultSet rs = pst.executeQuery();
+//					
+//					table.setModel(DbUtils.resultSetToTableModel(rs));
+//					
+//					
+//				}catch (Exception e1){
+//					e1.printStackTrace();
+//				}
+//				
+//			}
+//			
+//		});
 		
-		btnLoadFlights.setBounds(367, 304, 152, 29);
+		btnLoadFlights.setBounds(343, 304, 152, 29);
 		contentPane.add(btnLoadFlights);
 	}
 }
