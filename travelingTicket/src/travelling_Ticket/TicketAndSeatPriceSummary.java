@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
+//check
 public class TicketAndSeatPriceSummary extends JFrame  {
 
 	private JPanel contentPane;
