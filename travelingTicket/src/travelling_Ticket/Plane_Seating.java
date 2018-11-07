@@ -378,6 +378,13 @@ public class Plane_Seating extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton button_1 = new JButton("Next");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				extras extra = new extras();
+				extra.setVisible(true);
+			}
+		});
 		button_1.setBounds(652, 519, 117, 53);
 		contentPane.add(button_1);
 	}

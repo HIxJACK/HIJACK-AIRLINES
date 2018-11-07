@@ -174,7 +174,7 @@ public class Build1 {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNext = new JButton("next");
-		btnNext.setAction(action);
+		//btnNext.setAction(action);
 		btnNext.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNext.setToolTipText("Exit Button");
 		btnNext.addActionListener(new ActionListener() {
