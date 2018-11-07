@@ -200,5 +200,17 @@ public class checkout extends JFrame {
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnNewButton.setBounds(634, 475, 148, 70);
 		contentPane.add(btnNewButton);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				extras extra = new extras();
+				extra.setVisible(true);
+				dispose();
+			}
+		});
+		btnBack.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnBack.setBounds(434, 475, 148, 70);
+		contentPane.add(btnBack);
 	}
 }

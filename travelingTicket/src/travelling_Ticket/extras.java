@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -67,6 +68,7 @@ public class extras extends JFrame {
 		contentPane.add(chckbxNewCheckBox);
 		
 		JComboBox bagComboBox = new JComboBox();
+		bagComboBox.setModel(new DefaultComboBoxModel(new Integer[] {0, 1, 2, 3, 4}));
 		bagComboBox.setBounds(546, 133, 138, 27);
 		contentPane.add(bagComboBox);
 		
@@ -76,6 +78,7 @@ public class extras extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JComboBox petComboBox = new JComboBox();
+		petComboBox.setModel(new DefaultComboBoxModel(new Integer[] {0, 1, 2}));
 		petComboBox.setBounds(109, 190, 100, 27);
 		contentPane.add(petComboBox);
 		
@@ -98,6 +101,7 @@ public class extras extends JFrame {
 		contentPane.add(separator);
 		
 		JComboBox foodComboBox = new JComboBox();
+		foodComboBox.setModel(new DefaultComboBoxModel(new String[] {"Vegetarian", "Vegan", "Regular"}));
 		foodComboBox.setBounds(546, 190, 138, 27);
 		contentPane.add(foodComboBox);
 		
