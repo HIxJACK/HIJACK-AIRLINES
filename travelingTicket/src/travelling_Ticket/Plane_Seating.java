@@ -370,7 +370,7 @@ public class Plane_Seating extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				PassengerInfo window = new PassengerInfo();
-				window.frame.setVisible(true);
+	//			window.frame.setVisible(true);
 				dispose();
 			}
 		});

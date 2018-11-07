@@ -1,35 +1,38 @@
 package travelling_Ticket;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import java.sql.*;
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
-//check
-public class PassengerInfo extends JFrame {
+
+import travelling_Ticket.Flight_Times;
+import travelling_Ticket.Plane_Seating;
+
+import java.awt.event.ActionEvent;
+import java.sql.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+
+
+public class PassengerInfo extends javax.swing.JFrame {
 
 	JFrame frame;
-	JTextField txtFirstName;
-	JTextField txtMiddleName;
-	JTextField txtLastName;
-	JTextField txtEmail;
-	JPasswordField psPassword;
-	
+	private JTextField textFirstName;
+	private JTextField textLastName;
+	private JTextField textSkymile;
+	private JTextField textHomeAddress;
+	private JTextField textCity;
+	private JTextField textState;
+	private JTextField textZip;
+	private JPasswordField passwordField_1;
+	private JTextField textEmail;
+//	private final Action action = new SwingAction();
+	private JTextField textUsername;
+
 	/**
 	 * Launch the application.
 	 */
@@ -45,12 +48,13 @@ public class PassengerInfo extends JFrame {
 			}
 		});
 	}
-
+	Connection connection = null;
 	/**
 	 * Create the application.
 	 */
 	public PassengerInfo() {
-		initialize();
+		initialize();	
+		connection= sqliteConnection.dbConnector();  //initialize method for connection
 	}
 
 	/**
@@ -58,8 +62,7 @@ public class PassengerInfo extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 15));
-		frame.setBounds(0, 0, 800, 600);
+		frame.setBounds(100, 100, 777, 595);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -72,33 +75,168 @@ public class PassengerInfo extends JFrame {
 		lblLogo.setFont(new Font("Algerian", Font.PLAIN, 15));
 		panel.add(lblLogo);
 		
-		JButton btnNewButton = new JButton("Reset");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setToolTipText("Reset Button");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-		btnNewButton.setBounds(20, 482, 120, 58);
-		frame.getContentPane().add(btnNewButton);
+		JLabel lblNewLabel = new JLabel("First Name");
+		lblNewLabel.setBounds(42, 65, 77, 16);
+		frame.getContentPane().add(lblNewLabel);
 		
-		JButton btnNext = new JButton("Next");
-		btnNext.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNext.addActionListener(new ActionListener() {
+		JLabel lblNewLabel_1 = new JLabel("Last Name");
+		lblNewLabel_1.setBounds(42, 100, 77, 16);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("SkyMile Number");
+		lblNewLabel_2.setBounds(399, 100, 108, 16);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Home Address");
+		lblNewLabel_3.setBounds(40, 180, 108, 16);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("City");
+		lblNewLabel_4.setBounds(399, 180, 36, 16);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		textFirstName = new JTextField();
+		textFirstName.setBounds(131, 65, 254, 26);
+		frame.getContentPane().add(textFirstName);
+		textFirstName.setColumns(10);
+		
+		textLastName = new JTextField();
+		textLastName.setBounds(131, 100, 254, 26);
+		frame.getContentPane().add(textLastName);
+		textLastName.setColumns(10);
+		
+		textSkymile = new JTextField();
+		textSkymile.setBounds(519, 100, 130, 26);
+		frame.getContentPane().add(textSkymile);
+		textSkymile.setColumns(10);
+		
+		textHomeAddress = new JTextField();
+		textHomeAddress.setBounds(141, 180, 246, 26);
+		frame.getContentPane().add(textHomeAddress);
+		textHomeAddress.setColumns(10);
+		
+		JLabel lblState = new JLabel("State");
+		lblState.setBounds(578, 180, 36, 16);
+		frame.getContentPane().add(lblState);
+		
+		textCity = new JTextField();
+		textCity.setBounds(434, 180, 134, 26);
+		frame.getContentPane().add(textCity);
+		textCity.setColumns(10);
+		
+		textState = new JTextField();
+		textState.setBounds(613,180, 36, 26);
+		frame.getContentPane().add(textState);
+		textState.setColumns(10);
+		
+		JLabel lblZip = new JLabel("Zip");
+		lblZip.setBounds(648, 180, 25, 16);
+		frame.getContentPane().add(lblZip);
+		
+		textZip = new JTextField();
+		textZip.setBounds(674, 180, 67, 26);
+		frame.getContentPane().add(textZip);
+		textZip.setColumns(10);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(23, 131, 61, 16);
+		frame.getContentPane().add(label);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setBounds(42, 308, 77, 16);
+		frame.getContentPane().add(lblUsername);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(131, 373, 185, 26);
+		frame.getContentPane().add(passwordField_1);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(42,380, 61, 16);
+		frame.getContentPane().add(lblPassword);
+		class SwingAction extends AbstractAction {
+			public SwingAction() {
+				putValue(NAME, "SwingAction");
+				putValue(SHORT_DESCRIPTION, "Some short description");
+			}
 			public void actionPerformed(ActionEvent e) {
+			}
+		}
+		JButton btnLOGIN = new JButton("LOGIN");
+		btnLOGIN.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent arg0) {
+				try {		//create database
+					String query = "insert into PassengerID(FirstName,LastName,Skymile,HomeAddress,City,State,Zip,email,username,password) values(?,?,?,?,?,?,?,?,?,?)";
+					PreparedStatement pst= connection.prepareStatement(query);
+					pst.setString(1,textFirstName.getText() );
+					pst.setString(2,textLastName.getText() );
+					pst.setInt(3,Integer.parseInt(textSkymile.getText()));
+				//	pst.setString(3,textSkymiles.getText() );
+					pst.setString(4,textHomeAddress.getText() );
+					pst.setString(5,textCity.getText() );
+					pst.setString(6,textState.getText() );
+					pst.setString(7,textZip.getText() );
+					pst.setString(8,textEmail.getText() );
+					pst.setString(9,textUsername.getText() );
+					pst.setInt(10,Integer.parseInt(passwordField_1.getText()));
+					ResultSet rs=pst.getGeneratedKeys();
+			//		ResultSet rs = pst.getResultSet();
+					pst.execute();
+					JOptionPane.showMessageDialog(null,"Saved!");
+					
+					int count = 0;
+					while(rs.next()){
+						count=count+1;
+						
+					}
+					if (count ==1)
+					{
+						JOptionPane.showMessageDialog(null,"Username and password are correct! ");	
+					}
+					else if (count>1)
+					{
+						JOptionPane.showMessageDialog(null, "Duplicate Username and password ");
+					}
+					else{ 
+						JOptionPane.showMessageDialog(null, "Username and password is not correct. Please try again!");
+					}
+					
 				
-				
-				
-				frame.dispose();
+					pst.close();
+					rs.close();
+				}catch(Exception e)
+				{
+					JOptionPane.showMessageDialog(null, e);
+				}
+			
+			frame.dispose();
 			Plane_Seating seating = new Plane_Seating();
 			seating.setVisible(true);
-				
-				
-			}
+			}	
 		});
-		btnNext.setBounds(640, 482, 120, 58);
-		frame.getContentPane().add(btnNext);
+		btnLOGIN.setSelectedIcon(null);
+//		btnLOGIN.setAction(action);
+		btnLOGIN.setBounds(560, 482, 120, 58);
+		frame.getContentPane().add(btnLOGIN);
+		
+		JLabel lblNewLabel_5 = new JLabel("email");
+		lblNewLabel_5.setBounds(42, 240, 61, 16);
+		frame.getContentPane().add(lblNewLabel_5);
+		
+		textEmail = new JTextField();
+		textEmail.setBounds(96, 240, 254, 26);
+		frame.getContentPane().add(textEmail);
+		textEmail.setColumns(10);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(6, 280, 765, 38);
+		frame.getContentPane().add(separator);
+		
+		textUsername = new JTextField();
+		textUsername.setBounds(133, 308, 185, 26);
+		frame.getContentPane().add(textUsername);
+		textUsername.setColumns(10);
+		
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -112,7 +250,7 @@ public class PassengerInfo extends JFrame {
 				
 			}
 		});
-		btnBack.setBounds(488, 482, 120, 58);
+		btnBack.setBounds(330, 482, 120, 58);
 		frame.getContentPane().add(btnBack);
 		
 		JButton btnExit = new JButton("Exit");
@@ -129,116 +267,25 @@ public class PassengerInfo extends JFrame {
 				
 			}
 		});
-		btnExit.setBounds(170, 482, 120, 58);
+		btnExit.setBounds(100, 482, 120, 58);
 		frame.getContentPane().add(btnExit);
-		
-		JLabel lblPassenger = new JLabel("Passenger 1");
-		lblPassenger.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPassenger.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblPassenger.setBounds(25, 70, 125, 25);
-		frame.getContentPane().add(lblPassenger);
-		
-		JLabel lblFirstName = new JLabel("First Name:");
-		lblFirstName.setHorizontalAlignment(SwingConstants.LEFT);
-		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblFirstName.setBounds(50, 120, 125, 20);
-		frame.getContentPane().add(lblFirstName);
-		
-		txtFirstName = new JTextField();
-		txtFirstName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtFirstName.setColumns(10);
-		txtFirstName.setBounds(35, 150, 125, 25);
-		frame.getContentPane().add(txtFirstName);
-		
-		JLabel lblMiddleName = new JLabel("Middle Name:");
-		lblMiddleName.setHorizontalAlignment(SwingConstants.LEFT);
-		lblMiddleName.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblMiddleName.setBounds(250, 120, 125, 20);
-		frame.getContentPane().add(lblMiddleName);
-		
-		txtMiddleName = new JTextField();
-		txtMiddleName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtMiddleName.setColumns(10);
-		txtMiddleName.setBounds(235, 150, 125, 25);
-		frame.getContentPane().add(txtMiddleName);
-		
-		JLabel lblLastName = new JLabel("Last Name:");
-		lblLastName.setHorizontalAlignment(SwingConstants.LEFT);
-		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblLastName.setBounds(450, 120, 125, 20);
-		frame.getContentPane().add(lblLastName);
-		
-		txtLastName = new JTextField();
-		txtLastName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtLastName.setColumns(10);
-		txtLastName.setBounds(435, 150, 125, 25);
-		frame.getContentPane().add(txtLastName);
-		
-		JLabel lblSuffix = new JLabel("Suffix:");
-		lblSuffix.setHorizontalAlignment(SwingConstants.LEFT);
-		lblSuffix.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblSuffix.setBounds(650, 120, 125, 20);
-		frame.getContentPane().add(lblSuffix);
-		
-		JComboBox drpSuffix = new JComboBox();
-		drpSuffix.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		drpSuffix.setModel(new DefaultComboBoxModel(new String[] {"Select", "II", "III", "IV", "J.D.", "Jr", "M.Ed.", "PE", "Ph.D.", "Sr"}));
-		drpSuffix.setBounds(615, 150, 125, 25);
-		frame.getContentPane().add(drpSuffix);
-		
-		JLabel lblDOB = new JLabel("Date of Birth:");
-		lblDOB.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDOB.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblDOB.setBounds(50, 220, 125, 20);
-		frame.getContentPane().add(lblDOB);
-		
-		JComboBox drpMonth = new JComboBox();
-		drpMonth.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		drpMonth.setModel(new DefaultComboBoxModel(new Integer[] {null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}));
-		drpMonth.setBounds(35, 250, 65, 30);
-		frame.getContentPane().add(drpMonth);
-		
-		JComboBox drpDay = new JComboBox();
-		drpDay.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		drpDay.setModel(new DefaultComboBoxModel(new Integer[] {null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}));
-		drpDay.setBounds(110, 250, 65, 30);
-		frame.getContentPane().add(drpDay);
-		
-		JComboBox drpYear = new JComboBox();
-		drpYear.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		drpYear.setModel(new DefaultComboBoxModel(new Integer[] {null, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999}));
-		drpYear.setBounds(186, 250, 104, 30);
-		frame.getContentPane().add(drpYear);
-		
-		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblEmail.setBounds(325, 220, 125, 20);
-		frame.getContentPane().add(lblEmail);
-		
-		txtEmail = new JTextField();
-		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtEmail.setColumns(10);
-		txtEmail.setBounds(325, 250, 200, 25);
-		frame.getContentPane().add(txtEmail);
-		
-		JLabel lblPassword = new JLabel("Create Password:");
-		lblPassword.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblPassword.setBounds(600, 220, 150, 20);
-		frame.getContentPane().add(lblPassword);
-		
-		psPassword = new JPasswordField();
-		psPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		psPassword.setColumns(10);
-		psPassword.setBounds(600, 250, 125, 25);
-		frame.getContentPane().add(psPassword);
+		JButton btnNext = new JButton("Next");
+		btnNext.setFont(new Font("Tahoma", Font.PLAIN, 15));
+	/*	btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				frame.dispose();
+			Plane_Seating seating = new Plane_Seating();
+			seating.setVisible(true);
+				
+				
+			}
+		});
+		btnNext.setBounds(640, 482, 120, 58);
+		frame.getContentPane().add(btnNext);*/
 	}
-
-	public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		
+	
 	}
-}
-
 //passenger info

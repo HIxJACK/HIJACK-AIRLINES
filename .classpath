@@ -3,6 +3,8 @@
 	<classpathentry kind="src" path="travelingTicket/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="Resources/rs2xml.jar"/>
-	<classpathentry kind="lib" path="/Users/cjt1496/Downloads/sqlite-jdbc-3.23.1.jar"/>
+	<classpathentry kind="lib" path="/Users/sarahhinton/Documents/data structures/sqlite-jdbc-3.8.6.jar"/>
+	<classpathentry kind="lib" path="/Users/sarahhinton/HIxJack/tomcat-jdbc-9.0.11.jar"/>
+	<classpathentry kind="lib" path="/Users/sarahhinton/HIxJack/spring-boot-starter-jdbc-2.0.4.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

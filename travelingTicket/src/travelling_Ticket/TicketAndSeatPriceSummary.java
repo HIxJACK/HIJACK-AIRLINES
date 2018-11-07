@@ -85,7 +85,7 @@ public class TicketAndSeatPriceSummary extends JFrame  {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PassengerInfo PInfo = new PassengerInfo();
-				PInfo.frame.setVisible(true);
+//				PInfo.frame.setVisible(true);
 				dispose();
 				
 				
