@@ -25,6 +25,8 @@ import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 //check
 
 public class Build1 {
@@ -34,6 +36,7 @@ public class Build1 {
 	private JTextField txtTo;
 	private JTextField txtDeparture;
 	private JTextField txtReturn;
+	private final Action action = new SwingAction();
 
 	/**
 	 * Launch the application.
@@ -170,7 +173,8 @@ public class Build1 {
 		btnNewButton.setBounds(20, 482, 120, 58);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNext = new JButton("Next");
+		JButton btnNext = new JButton("next");
+		btnNext.setAction(action);
 		btnNext.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNext.setToolTipText("Exit Button");
 		btnNext.addActionListener(new ActionListener() {
@@ -185,7 +189,7 @@ public class Build1 {
 		});
 		
 		
-		btnNext.setBounds(640, 482, 120, 58);
+		btnNext.setBounds(650, 482, 120, 58);
 		frame.getContentPane().add(btnNext);
 		
 		JButton btnExit = new JButton("Exit");
@@ -303,14 +307,14 @@ public class Build1 {
 		
 	}
 
-	public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
-
-	
-
-	
 }
 
 //Build 1 update

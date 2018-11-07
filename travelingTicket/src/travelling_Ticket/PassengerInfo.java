@@ -88,9 +88,11 @@ public class PassengerInfo extends JFrame {
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-//				frame.dispose();
-//			Flight_Times flight = new Flight_Times();
-//			flight.setVisible(true);
+				
+				
+				frame.dispose();
+			Plane_Seating seating = new Plane_Seating();
+			seating.setVisible(true);
 				
 				
 			}
